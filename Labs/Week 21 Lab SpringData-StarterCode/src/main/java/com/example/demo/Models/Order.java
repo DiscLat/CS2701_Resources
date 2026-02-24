@@ -31,7 +31,7 @@ public class Order {
     
     
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="buyer")
+    @JoinColumn(name="buyer_id")
     private User buyer;
 
 
