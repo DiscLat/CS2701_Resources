@@ -1,7 +1,5 @@
 package com.example.demo.Models;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,69 +9,44 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Seller_Produce")
-public class SellerProduce{
+@Table(name="seller-produce")
+public class SellerProduce {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="seller_id")//user id
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="seller_id",nullable = false)
     private User seller;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="produce_id")
-    private Produce_Type product;
+    @ManyToOne(fetch= FetchType.LAZY, optional =false)
+    @JoinColumn(name="produce_id",nullable = false)
+    private Produce produce;
 
-    @NotBlank
-    Integer quantity;
+    @Column(nullable = false)
+    private Integer quantity;
 
-    @NotNull
-    @Column(name="price",precision = 8, scale = 2)
-    private BigDecimal price;
+    @Column(nullable = false)
+    private Float price;
 
-    
-    public long getId(){
-        return id;
-    }
 
-    public void setId(long id){
-        this.id = id;
-    }
+    public SellerProduce() {}
 
-    public User getSeller(){
-        return seller;
-    }
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id;}
 
-    public void setSeller(User seller){
-        this.seller = seller;
-    }
+    public User getSeller() { return seller;}
+    public void setSeller(User seller) {this.seller = seller;}
 
-    public Produce_Type getProduct(){
-        return product;
-    }   
+    public Produce getProduce() {return produce;}
+    public void setProduce(Produce produce) {this.produce = produce;}
 
-    public void setProduct(Produce_Type product){
-        this.product = product;
-    }
+    public Integer getQuantity() {return quantity;}
+    public void setQuantity(Integer quantity) {this.quantity=quantity;}
 
-    public Integer getQuantity(){
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity){
-        this.quantity = quantity;
-    }
-
-    public BigDecimal getPrice(){
-        return price;
-    }
-
-    public void setPrice(BigDecimal price){
-        this.price = price;
-    }
+    public Float getPrice() {return price;}
+    public void setPrice(float price) {this.price=price;}
 }

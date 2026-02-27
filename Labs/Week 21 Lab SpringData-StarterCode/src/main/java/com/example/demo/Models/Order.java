@@ -35,43 +35,17 @@ public class Order {
     private User buyer;
 
 
-    public Order() {
-    }
+    public Order() {}
+    public Order(User buyer){ this.buyer = buyer; }
 
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Order(User buyer) {
-        this.buyer = buyer;
-    }
+    public Date getDate() { return Date; }
+    public void setDate(Date date) { Date = date; }
 
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public Date getDate() {
-        return Date;
-    }
-
-
-    public void setDate(Date date) {
-        Date = date;
-    }
-
-
-    public User getBuyer() {
-        return buyer;
-    }
-
-
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
-    }
+    public User getBuyer() { return buyer; }
+    public void setBuyer(User buyer) { this.buyer = buyer; }
 
   
 }
